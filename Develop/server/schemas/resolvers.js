@@ -1,5 +1,3 @@
-// TO DO: Define the query and mutation functionality to work with the Mongoose models
-// Use the functionality in user-controller.js as a guide
 const { User, Book } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');

@@ -1,13 +1,10 @@
-// TO DO: Implement the Apollo Server and apply it to Express server as middleware
-// Note that if you are using Apollo Server 3 you are required use await server.start() before calling server.applyMiddleware. - had to comment out something at the bottom...need help understanding
-
 const express = require('express');
 const path = require('path');
 const db = require('./config/connection');
 const routes = require('./routes');
 const { ApolloServer } = require('apollo-server-express');
 const { authMiddleware } = require('./utils/auth');
-const {typeDefs, resolvers} = require('./schemas')
+const { typeDefs, resolvers } = require('./schemas')
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -44,6 +41,7 @@ if (process.env.NODE_ENV === 'production') {
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
+
   // integrate our Apollo server with the Express application as middleware
   server.applyMiddleware({ app });
 

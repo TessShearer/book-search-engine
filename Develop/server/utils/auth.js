@@ -1,5 +1,3 @@
-// TO DO: Update middleware function to work with GraphQL API
-
 const jwt = require('jsonwebtoken');
 
 // set token secret and expiration date
@@ -28,10 +26,7 @@ module.exports = {
     } catch {
       console.log('Invalid token');
     }
-
-    // send to next endpoint
     return req;
-    // Maybe what I need to do is return req instead?
   },
   signToken: function ({ username, email, _id }) {
     const payload = { username, email, _id };
