@@ -1,19 +1,23 @@
-// TO DO: Create an Apollo Provider to make every request work with the Apollo server
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchBooks from './pages/SearchBooks';
 import SavedBooks from './pages/SavedBooks';
 import Navbar from './components/Navbar';
-import {setContext} from '@apollo/client/link/context'
+import { setContext } from '@apollo/client/link/context'
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
-const authLink = setContext((_,{headers}) => {
-  const token = localStorage.getItem('id_token')
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
 });
 
 const client = new ApolloClient({
