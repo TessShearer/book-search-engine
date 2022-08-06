@@ -1,6 +1,3 @@
-// TO DO: remove userEffect() Hook that sets the state for UserData, instead add the useQuery() Hook to execute GET_ME query on load and save it to a variable named userData
-// Use the useMutation() Hook to execute REMOVE_BOOK mutation in the handleDeleteBook() function instead of the deleteBook() function that's imported from API file, while keeping removeBookId() in place
-
 import React from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
